@@ -17,20 +17,33 @@ class GetInfo(object):
         self.soup = BeautifulSoup(requests.get(url).text, 'lxml')
 
     def height(self):
-         for i in self.soup.select('#coordinate_info > p.model_info > a'):
-             get_hight = i.string[:3]
-             return get_hight
+
+        if self.soup.select('#coordinate_info > p.model_info > a') == []:
+            get_hight = ''
+        else:
+            for i in self.soup.select('#coordinate_info > p.model_info > a'):
+                get_hight = i.string[:3]
+
+        return get_hight
 
     def sex(self):
-        for i in self.soup.select('#coordinate_info > p.model_info > a'):
-            start = re.search(r'MEN|WOMEN', i.string).span()[0]
-            end = re.search(r'MEN|WOMEN', i.string).span()[1]
-            get_sex = i.string[start:end]
-            return get_sex
+        if self.soup.select('#coordinate_info > p.model_info > a') == []:
+            get_sex = ''
+        else:
+            for i in self.soup.select('#coordinate_info > p.model_info > a'):
+                start = re.search(r'MEN|WOMEN', i.string).span()[0]
+                end = re.search(r'MEN|WOMEN', i.string).span()[1]
+                get_sex = i.string[start:end]
+
+        return get_sex
 
     def title(self):
-        for i in self.soup.select('#coordinate_info > h1'):
-            get_title = i.string
+        if self.soup.select('#coordinate_info > h1') == []:
+            get_title = ''
+        else:
+            for i in self.soup.select('#coordinate_info > h1'):
+                get_title = i.string
+
         return get_title
 
     def text(self):
@@ -42,43 +55,70 @@ class GetInfo(object):
 
         return get_text
 
+
+
     def view(self):
-        for i in self.soup.select('#coordinate_img > p.view_num.icon_font'):
-            get_view = i.string
+        if self.soup.select('#coordinate_img > p.view_num.icon_font') == []:
+            get_view = ''
+        else:
+            for i in self.soup.select('#coordinate_img > p.view_num.icon_font'):
+                get_view = i.string
+
         return get_view
 
     def fav(self):
-        for i in self.soup.select('#function_btn > div.container.clearfix > div.btn_save.detailBtn.fn_btn > p > a > span'):
-            get_fav = i.string
+        if self.soup.select('#function_btn > div.container.clearfix > div.btn_save.detailBtn.fn_btn > p > a > span') == []:
+            get_fav = ''
+        else:
+            for i in self.soup.select('#function_btn > div.container.clearfix > div.btn_save.detailBtn.fn_btn > p > a > span'):
+                get_fav = i.string
+
         return get_fav
 
     def update_date(self):
-        for i in self.soup.select('#coordinate_info > div > p'):
-            get_date = i.string
+        if self.soup.select('#coordinate_info > div > p') == []:
+            get_date = ''
+        else:
+            for i in self.soup.select('#coordinate_info > div > p'):
+                get_date = i.string
+
         return get_date
 
     def ware_item(self):
         get_ware_items = []
-        for i in self.soup.select('#item > ul'):
-            for x in i.find_all('p',class_='txt'):
-                result = x.find('a')
-                if result == None:
-                    pass
-                else:
-                    get_ware_items.append(result.string)
+        if self.soup.select('#item > ul') == []:
+            get_ware_items = ''
+        else:
+            for i in self.soup.select('#item > ul'):
+                for x in i.find_all('p',class_='txt'):
+                    result = x.find('a')
+                    if result == None:
+                        pass
+                    else:
+                        get_ware_items.append(result.string)
+
         return get_ware_items
 
     def ware_tag(self):
         get_ware_tags = []
-        for i in self.soup.select('#tag > ul'):
-            for x in i.find_all('li'):
-                get_ware_tags.append(x.find('a').string)
-            return get_ware_tags
+        if self.soup.select('#tag > ul') == []:
+            get_ware_tags = ''
+        else:
+            for i in self.soup.select('#tag > ul'):
+                for x in i.find_all('li'):
+                    get_ware_tags.append(x.find('a').string)
+
+        return get_ware_tags
 
     def image(self):
-        img_html = self.soup.find('img',src=re.compile('^http://cdn.wimg.jp/coordinate'))
-        get_image = img_html['src']
+        if self.soup.select('#coordinate_img > p.img > img') == []:
+            get_image = ''
+        else:
+            html = self.soup.select('#coordinate_img > p.img > img')[0]
+            get_image = html['src']
+
         return get_image
+
 
 
 def download_img(url, file_name):
