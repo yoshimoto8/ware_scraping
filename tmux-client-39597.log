@@ -1,0 +1,66 @@
+1511851518.954228 client started (39597): version 2.6, socket /private/tmp/tmux-501/default, protocol 8
+1511851518.954442 on Darwin 17.2.0 Darwin Kernel Version 17.2.0: Fri Sep 29 18:27:05 PDT 2017; root:xnu-4570.20.62~3/RELEASE_X86_64; libevent 2.1.8-stable (select)
+1511851518.954584 socket is /private/tmp/tmux-501/default
+1511851518.954690 trying connect
+1511851518.955171 connect failed: Connection refused
+1511851518.956398 lock file is /private/tmp/tmux-501/default.lock
+1511851518.957822 flock succeeded
+1511851518.957914 got lock (6)
+1511851518.957986 trying connect
+1511851518.958073 connect failed: Connection refused
+1511851518.967973 add peer 0x7f86f0000000: 7 (0x0)
+1511851518.970385 sending message 100 to peer 0x7f86f0000000 (4 bytes)
+1511851518.970437 sending message 101 to peer 0x7f86f0000000 (15 bytes)
+1511851518.970534 sending message 102 to peer 0x7f86f0000000 (13 bytes)
+1511851518.970554 sending message 108 to peer 0x7f86f0000000 (52 bytes)
+1511851518.970578 sending message 104 to peer 0x7f86f0000000 (0 bytes)
+1511851518.970592 sending message 107 to peer 0x7f86f0000000 (4 bytes)
+1511851518.970605 sending message 105 to peer 0x7f86f0000000 (28 bytes)
+1511851518.970617 sending message 105 to peer 0x7f86f0000000 (15 bytes)
+1511851518.970629 sending message 105 to peer 0x7f86f0000000 (20 bytes)
+1511851518.970642 sending message 105 to peer 0x7f86f0000000 (57 bytes)
+1511851518.970653 sending message 105 to peer 0x7f86f0000000 (76 bytes)
+1511851518.970665 sending message 105 to peer 0x7f86f0000000 (25 bytes)
+1511851518.970677 sending message 105 to peer 0x7f86f0000000 (53 bytes)
+1511851518.970690 sending message 105 to peer 0x7f86f0000000 (11 bytes)
+1511851518.970703 sending message 105 to peer 0x7f86f0000000 (66 bytes)
+1511851518.970715 sending message 105 to peer 0x7f86f0000000 (116 bytes)
+1511851518.970728 sending message 105 to peer 0x7f86f0000000 (56 bytes)
+1511851518.970771 sending message 105 to peer 0x7f86f0000000 (17 bytes)
+1511851518.970785 sending message 105 to peer 0x7f86f0000000 (14 bytes)
+1511851518.970795 sending message 105 to peer 0x7f86f0000000 (19 bytes)
+1511851518.970805 sending message 105 to peer 0x7f86f0000000 (8 bytes)
+1511851518.970815 sending message 105 to peer 0x7f86f0000000 (18 bytes)
+1511851518.970824 sending message 105 to peer 0x7f86f0000000 (14 bytes)
+1511851518.970834 sending message 105 to peer 0x7f86f0000000 (24 bytes)
+1511851518.970843 sending message 105 to peer 0x7f86f0000000 (59 bytes)
+1511851518.970853 sending message 105 to peer 0x7f86f0000000 (13 bytes)
+1511851518.970863 sending message 105 to peer 0x7f86f0000000 (12 bytes)
+1511851518.970873 sending message 105 to peer 0x7f86f0000000 (12 bytes)
+1511851518.970882 sending message 105 to peer 0x7f86f0000000 (11 bytes)
+1511851518.970892 sending message 105 to peer 0x7f86f0000000 (34 bytes)
+1511851518.970901 sending message 105 to peer 0x7f86f0000000 (25 bytes)
+1511851518.970911 sending message 105 to peer 0x7f86f0000000 (25 bytes)
+1511851518.970921 sending message 105 to peer 0x7f86f0000000 (21 bytes)
+1511851518.970931 sending message 105 to peer 0x7f86f0000000 (21 bytes)
+1511851518.970940 sending message 105 to peer 0x7f86f0000000 (28 bytes)
+1511851518.970949 sending message 105 to peer 0x7f86f0000000 (21 bytes)
+1511851518.970959 sending message 105 to peer 0x7f86f0000000 (25 bytes)
+1511851518.970976 sending message 105 to peer 0x7f86f0000000 (32 bytes)
+1511851518.970992 sending message 105 to peer 0x7f86f0000000 (107 bytes)
+1511851518.971005 sending message 105 to peer 0x7f86f0000000 (17 bytes)
+1511851518.971019 sending message 105 to peer 0x7f86f0000000 (21 bytes)
+1511851518.971031 sending message 105 to peer 0x7f86f0000000 (31 bytes)
+1511851518.971042 sending message 105 to peer 0x7f86f0000000 (16 bytes)
+1511851518.971054 sending message 105 to peer 0x7f86f0000000 (22 bytes)
+1511851518.971066 sending message 105 to peer 0x7f86f0000000 (17 bytes)
+1511851518.971076 sending message 105 to peer 0x7f86f0000000 (15 bytes)
+1511851518.971090 sending message 106 to peer 0x7f86f0000000 (0 bytes)
+1511851518.971108 sending message 200 to peer 0x7f86f0000000 (4 bytes)
+1511851518.971134 client loop enter
+1511851518.989010 peer 0x7f86f0000000 message 207
+1511851518.989034 sending message 208 to peer 0x7f86f0000000 (0 bytes)
+1511851523.341559 peer 0x7f86f0000000 message 203
+1511851523.341589 sending message 205 to peer 0x7f86f0000000 (0 bytes)
+1511851523.341937 peer 0x7f86f0000000 message 204
+1511851523.341957 client loop exit

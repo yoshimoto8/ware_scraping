@@ -1,11 +1,12 @@
-import concurrent.futures
 import random
 import time
 import csv
 import requests
 import re
-from collections import namedtuple
-from os import path
+import time
+import sqlalchemy
+import sqlalchemy.ext.declarative
+import sqlalchemy.orm
 from bs4 import BeautifulSoup
 from my_logging import get_my_logger
 
@@ -54,8 +55,6 @@ class GetInfo(object):
                 get_text = re.sub('<br/>|<p class="content_txt">|</p>','',str(i))
 
         return get_text
-
-
 
     def view(self):
         if self.soup.select('#coordinate_img > p.view_num.icon_font') == []:
@@ -116,17 +115,55 @@ class GetInfo(object):
         else:
             html = self.soup.select('#coordinate_img > p.img > img')[0]
             get_image = html['src']
-            
+
         return get_image
 
+class Database(object):
+    def __repr__(self):
+        return '<Database %r>' % (self.id)
+
+    def __init__(self, height, sex, title, text, view, fav, date, item, tag, image):
+        self.height = height
+        self.sex = sex
+        self.title = title
+        self.text = text
+        self.view = view
+        self.fav = fav
+        self.date = date
+        self.item = item
+        self.tag = tag
+        self.image = image
+        self.update_at = time.time()
+        self.created_at = time.time()
+
+    @staticmethod
+    def create_dict(height, sex, title, text, view, fav, date, item, tag, image):
+        return {'height': height, 'sex': sex, 'title': title, 'text': text,
+                'view': view, 'fav': fav, 'date': date, 'item': item,
+                'tag': tag, 'image': image, 'update_at': time.time(),
+                'created_at': time.time()}
+
+    creaate_user = Table('user_data', metadata,
+                        Column('id', BigInteger, nullable=False,
+                            primary_key=True, autoincrement=True),
+                        Column('height', int),
+                        Column('sex', ),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+                        Column('height', int),
+
+    )
 
 
-def download_img(url, file_name):
-    r = requests.get(url, stream=True)
-    if r.status_code == 200:
-        with open(file_name, 'wb') as f:
-            r.raw.decode_content = True
-            shutil.copyfileobj(r.raw, f)
+
+
 
 def scraping(url, timeout=180):
     #リクエストの幅をランダムに選択する
@@ -169,17 +206,28 @@ if __name__ == '__main__':
         for row in reader:
             fashion_info.append(row[0])
 
-    result_of_scrapings = []
-    for url in fashion_info:
-        result_of_scrapings.append(scraping(url))
+    all_length_urls = len(fashion_info)
 
-    with open('result_scraping.csv', 'w') as f:
-        fieldnames = ['height', 'sex', 'title',
-                      'text', 'view', 'fav',
-                      'update_date', 'ware_item','ware_tag','result_image']
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for results in result_scrapings:
-            writer.writerow({'height':results[0], 'sex':results[1], 'title':results[2],
-                          'text':results[3], 'view':results[4], 'fav':results[5],
-                          'update_date':results[6], 'ware_item':results[7],'ware_tag':results[8],'result_image':results[9]})
+    for urls in [fashion_info[i:i+100] for i in range(0,all_length_urls,100)]:
+
+        for url in urls:
+            sucraping_result = scraping(url)
+
+
+
+
+    # result_of_scrapings = []
+    # for url in fashion_info[start_url_index:end_url_index]:
+    #
+        # result_of_scrapings.append(scraping(url))
+
+    # with open('result_scraping.csv', 'w') as f:
+    #     fieldnames = ['height', 'sex', 'title',
+    #                   'text', 'view', 'fav',
+    #                   'update_date', 'ware_item','ware_tag','result_image']
+    #     writer = csv.DictWriter(f, fieldnames=fieldnames)
+    #     writer.writeheader()
+    #     for results in result_scrapings:
+    #         writer.writerow({'height':results[0], 'sex':results[1], 'title':results[2],
+    #                       'text':results[3], 'view':results[4], 'fav':results[5],
+    #                       'update_date':results[6], 'ware_item':results[7],'ware_tag':results[8],'result_image':results[9]})
