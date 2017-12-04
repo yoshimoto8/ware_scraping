@@ -1,2 +1,4 @@
 urls.csv
 logs/*
+*.log
+image_list
